@@ -1,10 +1,9 @@
-import { argv } from 'node:process';
 import {stdout as output } from 'node:process';
 import { errorHandler } from '../utils/errorHandler.js';
 
 export const printGreeting = () => {
      try{
-          const name = argv[2].slice(11) || 'Guest';
+          const name = process.env.npm_config_username || 'Guest';
           output.write(`\x1b[35m Welcome to the File Manager, ${name}! \n\x1b[0m`);
           return name;
      }
