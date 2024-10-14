@@ -4,7 +4,6 @@ import { printGreeting } from './src/commands/printGreeting.js';
 import { exit } from './src/commands/exit.js';
 import { commandHandler } from './src/utils/commandHandler.js';
 import { printCurrentWorkingDirectory } from './src/utils/printCurrentWorkingDirectory.js';
-import os from 'os';
 
 export const rl = readline.createInterface({ input, output });
 rl.prompt();

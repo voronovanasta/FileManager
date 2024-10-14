@@ -10,6 +10,7 @@ import { renameFile } from "../commands/basicCommands/renameFile.js";
 import { copyFile } from "../commands/basicCommands/copyFile.js";
 import { deleteFile } from "../commands/basicCommands/deleteFile.js";
 import { moveFile } from "../commands/basicCommands/moveFile.js";
+import { operationCommandHandler } from "../commands/operationCommands/operationCommandHandler.js";
 
 export const commandHandler = async (command, args) => {
     switch(command) {
@@ -42,6 +43,9 @@ export const commandHandler = async (command, args) => {
         break;
         case('mv'):
         moveFile(args);
+        break;
+        case('os'):
+        operationCommandHandler(args[0]);
         break;
 
         default:
