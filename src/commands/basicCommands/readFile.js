@@ -16,7 +16,6 @@ export const readFile = (filePath) => {
         })
     }
     catch(err) {
-        console.error(err.message)
         errorHandler(err.message)
     }
 

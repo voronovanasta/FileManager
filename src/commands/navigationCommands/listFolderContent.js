@@ -3,7 +3,7 @@ import { cwd } from 'node:process';
 import { errorHandler } from '../../utils/errorHandler.js';
 import { rl } from '../../../app.js';
 
-export const  listContent = async() => {
+export const  listFolderContent = async() => {
     try{
         const currentPath = cwd(); 
         const content = await readdir(currentPath, {withFileTypes: true});

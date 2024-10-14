@@ -1,5 +1,6 @@
 import os from 'os';
 import { rl } from '../../../app.js';
+import { errorHandler } from '../../utils/errorHandler.js';
 
 const printEndOfLine = () => {
     console.log(`Default system End-Of-Line: ${JSON.stringify(os.EOL)}`)
@@ -49,6 +50,7 @@ export const operationCommandHandler = (arg) => {
         case '--architecture':
             printArchitecture();
         break;
-
+        default:
+            errorHandler('invalid command');
     }
 }

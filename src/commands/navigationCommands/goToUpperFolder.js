@@ -5,8 +5,6 @@ import { errorHandler } from '../../utils/errorHandler.js';
 export const goToUpperFolder = () => {
     try {
         const currentPath = cwd();
-        //const index = currentPath.lastIndexOf('\\');
-        //const target = currentPath.slice(0, index + 1)
         const target = dirname(currentPath)
         chdir(target);
       } catch (err) {

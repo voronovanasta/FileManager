@@ -1,9 +1,9 @@
 import { exit } from "../commands/exit.js";
 import { errorHandler } from "./errorHandler.js";
-import { goToUpperFolder } from "../commands/navigaionCommands/goToUpperFolder.js";
-import { gotoFolderByPath } from "../commands/navigaionCommands/gotoFolderByPath.js";
+import { goToUpperFolder } from "../commands/navigationCommands/goToUpperFolder.js";
+import { gotoFolderByPath } from "../commands/navigationCommands/gotoFolderByPath.js";
 import { name } from "../../app.js";
-import { listContent } from "../commands/navigaionCommands/listContent.js";
+import { listFolderContent } from "../commands/navigationCommands/listFolderContent.js";
 import { readFile } from "../commands/basicCommands/readFile.js";
 import { createFile } from "../commands/basicCommands/createFile.js";
 import { renameFile } from "../commands/basicCommands/renameFile.js";
@@ -11,6 +11,7 @@ import { copyFile } from "../commands/basicCommands/copyFile.js";
 import { deleteFile } from "../commands/basicCommands/deleteFile.js";
 import { moveFile } from "../commands/basicCommands/moveFile.js";
 import { operationCommandHandler } from "../commands/operationCommands/operationCommandHandler.js";
+import { logHashOfFile } from "../commands/logHashOfFile.js";
 
 export const commandHandler = async (command, args) => {
     switch(command) {
@@ -24,7 +25,7 @@ export const commandHandler = async (command, args) => {
         gotoFolderByPath(args[0]);
         break;
         case('ls'):
-        listContent();
+        listFolderContent();
         break;
         case('cat'):
         readFile(args[0]);
@@ -46,6 +47,9 @@ export const commandHandler = async (command, args) => {
         break;
         case('os'):
         operationCommandHandler(args[0]);
+        break;
+        case('hash'):
+        await  logHashOfFile(args[0]);
         break;
 
         default:
