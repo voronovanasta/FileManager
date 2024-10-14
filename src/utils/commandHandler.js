@@ -13,6 +13,7 @@ import { moveFile } from "../commands/basicCommands/moveFile.js";
 import { operationCommandHandler } from "../commands/operationCommands/operationCommandHandler.js";
 import { logHashOfFile } from "../commands/logHashOfFile.js";
 import { compressCommandHandler } from "../commands/compressCommandHandler.js";
+import { decompressCommandHandler } from "../commands/decompressCommandHandler.js";
 
 export const commandHandler = async (command, args) => {
     switch(command) {
@@ -53,9 +54,11 @@ export const commandHandler = async (command, args) => {
         await  logHashOfFile(args[0]);
         break;
         case('compress'):
-        await  compressCommandHandler(args[0]);
+        await compressCommandHandler(args);
         break;
-
+        case('decompress'):
+        await decompressCommandHandler(args);
+        break;
         default:
             errorHandler('invalid command')
     }

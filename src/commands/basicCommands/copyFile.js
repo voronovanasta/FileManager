@@ -1,5 +1,5 @@
 import { pipeline } from 'node:stream/promises';
-import { createReadStream, createWriteStream, existsSync, mkdirSync } from 'node:fs';
+import { createReadStream, createWriteStream } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { errorHandler } from '../../utils/errorHandler.js';
 import { cwd } from 'node:process';

@@ -3,10 +3,10 @@ import { createReadStream, createWriteStream } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { errorHandler } from '../utils/errorHandler.js';
 import { cwd } from 'node:process';
-import { createBrotliCompress  } from 'node:zlib';
+import { createBrotliDecompress  } from 'node:zlib';
 
-export const compressCommandHandler = async(args) => {
-    const compress = createBrotliCompress();
+export const decompressCommandHandler = async(args) => {
+    const decompress = createBrotliDecompress();
     
     try {
         if(args.length < 2) throw new Error('no args')
@@ -15,9 +15,9 @@ export const compressCommandHandler = async(args) => {
         const input = createReadStream(pathToFile);
  
         const pathToFolder = resolve(cwd(), destinationFolderName);
-        const pathToCompressedFile = join(pathToFolder, fileName.split('.', 1) + "Compressed.br")
-        const output = createWriteStream(pathToCompressedFile);
-        await pipeline(input,compress, output)
+        const pathToDecompressedFile = join(pathToFolder, fileName.split('.', 1) + "Decompressed.txt")
+        const output = createWriteStream(pathToDecompressedFile);
+        await pipeline(input, decompress, output)
  
      }
      catch(err) {
